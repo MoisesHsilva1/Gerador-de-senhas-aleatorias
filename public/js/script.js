@@ -1,41 +1,58 @@
 class GeratePassword {
     constructor() {
-        this.lowercaserLetters = document.getElementById('checkbox-lowercaseLetters');
+        this.lowerCaserLetters = document.getElementById('checkbox-lowercaseLetters');
         this.resulRandomPassword = document.getElementById('random-password');
-        this.upcaserLetters = document.getElementById('checkbox-UpcaseLetters');
+        this.upeerCaserLetters = document.getElementById('checkbox-UpcaseLetters');
+        this.numbersPassword = document.getElementById('checkbox-numbers');
         this.numberCharacters = document.getElementById('input-numberCharacters');
-        this.string = ["abcdefghijklmnopqstuvxwyz"];
+        this.specialCharacters = document.getElementById('checkbox-specialCharacters')
+        this.passwords = ["abcdefghijklmnopqstuvxwyz", "1234567891012345678", "!@#$%&*()?!@@##4"];
     }
     fieldSetNumberCharactersPassword() {
-        var valueField = '12'; 
-        var notvalueField = '';
-        (notvalueField === '' || isNaN(Number(valueField)))
-            ? window.alert('Por favor, preencha o campo com um número') 
-            : null;
+        this.numberCharacters.value === '' && window.alert('Por favor, preencha o campo com um número')
     }
     geratePasswordLowCaser() {
-        if (this.lowercaserLetters.checked == true) {
-            const lowecaser = this.string[0].toLowerCase();
+        if (this.lowerCaserLetters.checked == true) {
+            const lowecaser = this.passwords[0].toLowerCase();
             const randomLowerCaser = lowecaser[Math.floor(Math.random()) * lowecaser.length]
             this.resulRandomPassword.textContent = randomLowerCaser
             return true;
         }
         return false;
     }
-    geratePasswordUpCase() {
-        if (this.upcaserLetters.checked == true) {
-            const upcaser = this.string[0].toUpperCase();
+    geratePasswordUpeerCase() {
+        if (this.upeerCaserLetters.checked == true) {
+            const upcaser = this.passwords[0].toUpperCase();
             const randomUpcaser = upcaser[Math.floor(Math.random()) * upcaser.length]
             this.resulRandomPassword.textContent = randomUpcaser
             return true;
         }
         return false;
     }
+    geratePasswordNumbers() {
+        if (this.numbersPassword.checked == true) {
+            const numbers = this.passwords[1]
+            const randomNumbers = numbers[Math.floor(Math.random()) * numbers.length]
+            this.resulRandomPassword.textContent = randomNumbers
+        }
+    }
+    gerateSpecialCharacters() {
+        if (this.specialCharacters.checked == true) {
+            const specialCharacters = this.passwords[2]
+            const randomSpecialCharacters = specialCharacters[Math.floor(Math.random()) * specialCharacters.length]
+            this.resulRandomPassword.textContent = randomSpecialCharacters
+        }
+    }
+    addEventsListers() {
+        this.geratePasswordLowCaser();
+        this.geratePasswordUpeerCase();
+        this.fieldSetNumberCharactersPassword();
+        this.geratePasswordNumbers();
+        this.gerateSpecialCharacters();
+    }
 }
 const geratePassword = new GeratePassword();
 
 document.getElementById('button-gerate-password').addEventListener('click', function () {
-    geratePassword.geratePasswordLowCaser();
-    geratePassword.geratePasswordUpCase();
-    geratePassword.fieldSetNumberCharactersPassword();
+    geratePassword.addEventsListers();
 })

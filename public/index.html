@@ -11,15 +11,20 @@
     <h1 class="title">Gerador de senhas aleatorias</h1>
     <div class="content-definition-password">
         <label>Quantos caracteres gostaria em suas senhas:</label>
-        <input type="number" id="input-numberCharacters" placeholder="1 a 20">
+        <input type="number" id="input-numberCharacters" placeholder="1 a 20" required>
+
         <label>Gostaria de letras maiusculas em suas senhas:<label>
         <input type="checkbox" id="checkbox-UpcaseLetters">
+
         <label>Gostaria de letras minusculas em suas senhas:</label>
         <input type="checkbox" id="checkbox-lowercaseLetters">
+
         <label>Gostaria de numeros em suas senhas:</label>
         <input type="checkbox" id="checkbox-numbers">
+
         <label>Gostaria de caracteres especiais em sua senha:</label>
         <input type="checkbox" id="checkbox-specialCharacters">
+        
         <p id="random-password"></p>
         <button id="button-gerate-password">Gerar</button>
     </div>
