@@ -7,6 +7,7 @@ class GeratePassword {
         this.numberCharacters = document.getElementById('range-numberCharacters');
         this.specialCharacters = document.getElementById('checkbox-specialCharacters');
         this.spanNumbersRange = document.getElementById('numberCharactersPassword');
+        this.rangerNumberCharacters = document.getElementById('rangePassoword');
         this.passwords = [
             "abcdefghijklmnopqstuvxwyz",
             "1234567891012345678",
@@ -46,22 +47,25 @@ class GeratePassword {
         }
         return '';
     }
-    gerateNumerbsRange() {
-        this.numberCharacters.max < this.numberCharacters.min || this.numberCharacters.min < this.numberCharacters.max
-            ? this.spanNumbersRange.textContent = 10
-            : this.spanNumbersRange.textContent = 20
-
+    gerateRandomPassword() {
+        this.rangerNumberCharacters.min < this.rangerNumberCharacters.max 
+        ? console.log(this.rangerNumberCharacters.length) 
+        : ''
     }
     addEventsListers() {
         this.geratePasswordLowCaser();
         this.geratePasswordUpeerCase();
         this.geratePasswordNumbers();
         this.gerateSpecialCharacters();
-        this.gerateNumerbsRange();
     }
+     
 }
+
 const geratePassword = new GeratePassword();
 
 document.getElementById('button-gerate-password').addEventListener('click', function () {
     geratePassword.addEventsListers();
 })
+document.getElementById('rangePassoword').addEventListener('input', function () {
+    geratePassword.gerateRandomPassword(); 
+});

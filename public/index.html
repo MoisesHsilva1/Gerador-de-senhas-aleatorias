@@ -11,8 +11,9 @@
     <h1 class="title">Gerador de senhas aleatorias</h1>
     <div class="content-definition-password">
         <label>Quantos caracteres gostaria em suas senhas:</label>
-        <input type="range" min="1" max="20" id="range-numberCharacters">
-        <span id="numberCharactersPassword">Tamanho da senha:</span>
+        <input type="range" min="1" max="20" value="1" step="1" oninput="numberCharactersPassword.innerText = this.value" id="rangePassoword">
+        <label>Tamanho da senha:</label>
+        <span id="numberCharactersPassword"></span>
 
         <label>Gostaria de letras maiusculas em suas senhas:<label>
         <input type="checkbox" id="checkbox-UpcaseLetters">
