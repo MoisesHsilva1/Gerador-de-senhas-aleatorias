@@ -7,7 +7,23 @@ body {
 }
 .content-definition-password {
     background-color: aliceblue;
-    border: 20px;
-    padding: 10px;
-    width: 100%;
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 10%;
+    padding: 20px;
+    border-radius: 10px;
+    align-items: right;
+    justify-content: right;
+    display: flex;
+    flex-direction: column;
+}
+.title {
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    color: rgb(237, 237, 237);
+}
+#rangePassword {
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
