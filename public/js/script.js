@@ -11,61 +11,33 @@ class GeratePassword {
         this.passwords = [
             "abcdefghijklmnopqstuvxwyz",
             "1234567891012345678",
-            "!@#$%&*()?!@@##4"
+            "!@#$%&*()?!@@#$%&*()?"
         ];
     }
-    geratePasswordLowCaser() {
-        if (this.lowerCaserLetters.checked) {
-            const lowecaser = this.passwords[0]
-            const randomLowerCaser = lowecaser[Math.floor(Math.random() * lowecaser.length)]
-            this.resulRandomPassword.textContent = randomLowerCaser
-        }
-        return '';
-
-    }
-    geratePasswordUpeerCase() {
-        if (this.upeerCaserLetters.checked) {
-            const upcaser = this.passwords[0].toUpperCase();
-            const randomUpcaser = upcaser[Math.floor(Math.random() * upcaser.length)]
-            this.resulRandomPassword.textContent = randomUpcaser
-        }
-        return '';
-    }
-    geratePasswordNumbers() {
-        if (this.numbersPassword.checked) {
-            const numbers = this.passwords[1]
-            const randomNumbers = numbers[Math.floor(Math.random() * numbers.length)]
-            this.resulRandomPassword.textContent = randomNumbers
-        }
-        return '';
-    }
-    gerateSpecialCharacters() {
-        if (this.specialCharacters.checked == true) {
-            const specialCharacters = this.passwords[2]
-            const randomSpecialCharacters = specialCharacters[Math.floor(Math.random() * specialCharacters.length)]
-            this.resulRandomPassword.textContent = randomSpecialCharacters
-        }
-        return '';
-    }
     gerateRandomPassword() {
-        this.rangerNumberCharacters.min < this.rangerNumberCharacters.max 
-        ? console.log(this.rangerNumberCharacters.length) 
-        : ''
+        const lengthPassword = parseInt(this.rangerNumberCharacters.value)
+        let newPassword = '';
+        for (let i = 0; i < lengthPassword; i++) {
+            const categories = [];
+            if (this.lowerCaserLetters.checked) categories.push(this.passwords[0]);
+            if (this.upeerCaserLetters.checked) categories.push(this.passwords[0].toUpperCase());
+            if (this.numbersPassword.checked) categories.push(this.passwords[1]);
+            if (this.specialCharacters.checked) categories.push(this.passwords[2]);
+
+            if (categories.length > 0) {
+                const randomCategory = categories[Math.floor(Math.random() * categories.length)];
+                const randomCharacter = randomCategory[Math.floor(Math.random() * randomCategory.length)];
+                newPassword += randomCharacter;
+            }
+        }
+        this.resulRandomPassword.textContent = newPassword;
     }
     addEventsListers() {
-        this.geratePasswordLowCaser();
-        this.geratePasswordUpeerCase();
-        this.geratePasswordNumbers();
-        this.gerateSpecialCharacters();
+        this.gerateRandomPassword();
     }
-     
 }
-
 const geratePassword = new GeratePassword();
 
 document.getElementById('button-gerate-password').addEventListener('click', function () {
     geratePassword.addEventsListers();
 })
-document.getElementById('rangePassoword').addEventListener('input', function () {
-    geratePassword.gerateRandomPassword(); 
-});
