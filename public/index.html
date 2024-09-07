@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,28 +8,31 @@
     <script src="js/script.js" defer></script>
     <title>Gerador de senhas aleatorias</title>
 </head>
+
 <body>
     <h1 class="title">Gerador de senhas aleatorias</h1>
     <div class="content-definition-password">
         <label>Quantos caracteres gostaria em suas senhas:</label>
-        <input type="range" min="1" max="20" value="1" step="1" oninput="numberCharactersPassword.innerText = this.value" id="rangePassoword">
+        <input type="range" min="1" max="20" value="1" step="1"
+            oninput="numberCharactersPassword.innerText = this.value" id="rangePassoword" value>
         <label>Tamanho da senha:</label>
         <span id="numberCharactersPassword"></span>
 
         <label>Gostaria de letras maiusculas em suas senhas:<label>
-        <input type="checkbox" id="checkbox-UpcaseLetters">
+                <input type="checkbox" id="checkbox-UpcaseLetters">
 
-        <label>Gostaria de letras minusculas em suas senhas:</label>
-        <input type="checkbox" id="checkbox-lowercaseLetters">
+                <label>Gostaria de letras minusculas em suas senhas:</label>
+                <input type="checkbox" id="checkbox-lowercaseLetters">
 
-        <label>Gostaria de numeros em suas senhas:</label>
-        <input type="checkbox" id="checkbox-numbers">
+                <label>Gostaria de numeros em suas senhas:</label>
+                <input type="checkbox" id="checkbox-numbers">
 
-        <label>Gostaria de caracteres especiais em sua senha:</label>
-        <input type="checkbox" id="checkbox-specialCharacters">
-        
-        <p id="random-password"></p>
-        <button id="button-gerate-password">Gerar</button>
+                <label>Gostaria de caracteres especiais em sua senha:</label>
+                <input type="checkbox" id="checkbox-specialCharacters">
+
+                <p id="random-password"></p>
+                <button id="button-gerate-password">Gerar</button>
     </div>
 </body>
+
 </html>

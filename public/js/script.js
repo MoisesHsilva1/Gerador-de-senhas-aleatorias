@@ -4,40 +4,49 @@ class GeratePassword {
         this.resulRandomPassword = document.getElementById('random-password');
         this.upeerCaserLetters = document.getElementById('checkbox-UpcaseLetters');
         this.numbersPassword = document.getElementById('checkbox-numbers');
-        this.numberCharacters = document.getElementById('range-numberCharacters');
         this.specialCharacters = document.getElementById('checkbox-specialCharacters');
-        this.spanNumbersRange = document.getElementById('numberCharactersPassword');
-        this.rangerNumberCharacters = document.getElementById('rangePassoword');
+        this.rangeNumberCharacters = document.getElementById('rangePassoword');
         this.passwords = [
             "abcdefghijklmnopqstuvxwyz",
             "1234567891012345678",
             "!@#$%&*()?!@@#$%&*()?"
         ];
     }
-    gerateRandomPassword() {
-        const lengthPassword = parseInt(this.rangerNumberCharacters.value)
-        let newPassword = '';
-        for (let i = 0; i < lengthPassword; i++) {
-            const categories = [];
-            if (this.lowerCaserLetters.checked) categories.push(this.passwords[0]);
-            if (this.upeerCaserLetters.checked) categories.push(this.passwords[0].toUpperCase());
-            if (this.numbersPassword.checked) categories.push(this.passwords[1]);
-            if (this.specialCharacters.checked) categories.push(this.passwords[2]);
 
-            if (categories.length > 0) {
-                const randomCategory = categories[Math.floor(Math.random() * categories.length)];
+    gerateRandomPassword() {
+        this.newPassword = '';
+        this.categories = [];
+
+        const options = [
+            [this.lowerCaserLetters.checked, this.passwords[0]],
+            [this.upeerCaserLetters.checked, this.passwords[0].toUpperCase()],
+            [this.numbersPassword.checked, this.passwords[1]],
+            [this.specialCharacters.checked, this.passwords[2]]
+        ];
+
+        this.categories = options
+            .map(option => option[0] ? option[1] : '')
+            .filter(category => category !== '');
+
+        const lengthPassword = parseInt(this.rangeNumberCharacters.value);
+
+        for (let i = 0; i < lengthPassword; i++) {
+            if (this.categories.length > 0) {
+                const randomCategory = this.categories[Math.floor(Math.random() * this.categories.length)];
                 const randomCharacter = randomCategory[Math.floor(Math.random() * randomCategory.length)];
-                newPassword += randomCharacter;
+                this.newPassword += randomCharacter;
             }
         }
-        this.resulRandomPassword.textContent = newPassword;
+        this.resulRandomPassword.textContent = this.newPassword;
     }
+
     addEventsListers() {
         this.gerateRandomPassword();
     }
 }
+
 const geratePassword = new GeratePassword();
 
 document.getElementById('button-gerate-password').addEventListener('click', function () {
     geratePassword.addEventsListers();
-})
+});
