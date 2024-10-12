@@ -27,5 +27,5 @@ Siga os passos abaixo para executar o projeto em sua máquina local:
 
 1. **Clone o repositório**:
    ```bash
-   git clone https://github.com/seu-usuario/gerador-senhas.git
-   cd gerador-senhas
+   git clone https://github.com/seu-usuario/gerador-senhas-aleatorias.git
+   cd gerador-senhas-aleatorias
